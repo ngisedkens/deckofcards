@@ -1,7 +1,7 @@
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
-DEBUG = False
+DEBUG = True
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -69,7 +69,7 @@ ROOT_URLCONF = 'spades.urls'
 
 WSGI_APPLICATION = 'spades.wsgi.application'
 
-SECURE_SSL_REDIRECT = True
+SECURE_SSL_REDIRECT = False
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases

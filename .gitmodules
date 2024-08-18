@@ -1,0 +1,4 @@
+[submodule "TriPeaksSolitaire"]
+	path = static/games/TriPeaksSolitaire
+	url = git@github.com:ngisedkens/TriPeaksSolitaire.git
+	branch = master

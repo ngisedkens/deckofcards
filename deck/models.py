@@ -64,24 +64,25 @@ class Deck(models.Model):
         self.last_used = datetime.datetime.now()
         super(Deck, self).save(*args, **kwargs)
 
-def card_to_dict(card):
+def card_to_dict(card, request):
     value = card[:1]
     suit = card[1:]
 
+    hostname = request.get_host()
     code = value + suit
     card_dict = {
         'code': code,
-        'image': 'https://deckofcardsapi.com/static/img/%s.png' % code,
+        'image': 'http://%s/static/img/%s.png' % (hostname, code),
         'images': {
-            'svg': 'https://deckofcardsapi.com/static/img/%s.svg' % code,
-            'png': 'https://deckofcardsapi.com/static/img/%s.png' % code
+            'svg': 'http://%s/static/img/%s.svg' % (hostname, code),
+            'png': 'http://%s/static/img/%s.png' % (hostname, code),
         }
     }
 
     if code == 'AD':
-        card_dict['image'] = 'https://deckofcardsapi.com/static/img/aceDiamonds.png'
-        card_dict['images']['png'] = 'https://deckofcardsapi.com/static/img/aceDiamonds.png'
-        card_dict['images']['svg'] = 'https://deckofcardsapi.com/static/img/aceDiamonds.svg'
+        card_dict['image'] = 'http://%s/static/img/aceDiamonds.png' % hostname
+        card_dict['images']['png'] = 'http://%s/static/img/aceDiamonds.png' % hostname
+        card_dict['images']['svg'] = 'http://%s/static/img/aceDiamonds.svg' % hostname
 
     card_dict['value'] = VALUES.get(value) or value
     card_dict['suit'] = SUITS.get(suit) or suit

@@ -127,7 +127,7 @@ def draw(request, key=None):
 
     a = []
     for card in cards:
-        a.append(card_to_dict(card))
+        a.append(card_to_dict(card, request))
 
     if not success:
         resp = {
@@ -310,7 +310,7 @@ def list_cards_in_pile(request, key, pile):
         else:
             a = []
             for card in deck.piles[k]:
-                a.append(card_to_dict(card))
+                a.append(card_to_dict(card, request))
             piles[k] = {"remaining": r, "cards": a}
 
     resp = {'success': True, 'deck_id': deck.key, 'remaining': len(deck.stack), 'piles': piles}
@@ -381,7 +381,7 @@ def draw_from_pile(request, key, pile, location=""):
     a = []
 
     for card in cards_in_response:
-        a.append(card_to_dict(card))
+        a.append(card_to_dict(card, request))
 
     piles = {}
     for k in deck.piles:
