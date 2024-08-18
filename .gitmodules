@@ -1,3 +1,7 @@
+[submodule "Match3"]
+	path = static/games/Match3
+	url = git@github.com:rembound/Match-3-Game-HTML5.git
+	branch = master
 [submodule "TriPeaksSolitaire"]
 	path = static/games/TriPeaksSolitaire
 	url = git@github.com:ngisedkens/TriPeaksSolitaire.git
